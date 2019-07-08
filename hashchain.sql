@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2019 at 07:26 AM
+-- Generation Time: Jul 08, 2019 at 01:20 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -39,9 +39,7 @@ CREATE TABLE `attendance` (
 --
 
 INSERT INTO `attendance` (`id`, `Name`, `Start_time`, `End_time`, `Presented`) VALUES
-(2, 'user5', '03:03', '15:03', '11/04/2019'),
-(3, 'test', '06:06', '21:09', '03/05/2019'),
-(4, 'user1', '02:02', '13:01', '01/17/2019');
+(7, 'Test ', '11:01', '17:00', '01/07/2019');
 
 -- --------------------------------------------------------
 
@@ -51,7 +49,7 @@ INSERT INTO `attendance` (`id`, `Name`, `Start_time`, `End_time`, `Presented`) V
 
 CREATE TABLE `final_good` (
   `id` int(11) NOT NULL,
-  `Date` date NOT NULL,
+  `Date` varchar(255) NOT NULL,
   `Barcode` varchar(255) NOT NULL,
   `Product_name` varchar(255) NOT NULL,
   `Section` varchar(255) NOT NULL,
@@ -63,8 +61,12 @@ CREATE TABLE `final_good` (
 --
 
 INSERT INTO `final_good` (`id`, `Date`, `Barcode`, `Product_name`, `Section`, `Quantity`) VALUES
-(1, '2019-01-31', 'Code 1', '1', 'Section 1', 5),
-(2, '2019-04-01', 'Code 2', '2', 'Section 2', 50);
+(1, '01/07/2019', 'Code 1', '26', 'option 1', 5),
+(2, '2019-04-01', 'Code 2', '2', 'Section 2', 50),
+(3, '03/01/2019', 'code1', 'product 1', 'option 1', 5),
+(4, '0000-00-00', 'code1', '24', 'option 1', 10),
+(5, '02/21/2019', 'code1', 'sh', 'option 1', 50),
+(6, '02/06/2019', 'code1', 's', 'option 1', 10);
 
 -- --------------------------------------------------------
 
@@ -120,7 +122,7 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id`, `Username`, `Password`) VALUES
-(1, 'user1', 'user'),
+(1, 'admin@admin.com', 'password'),
 (2, 'user2', 'user');
 
 -- --------------------------------------------------------
@@ -136,7 +138,7 @@ CREATE TABLE `main_stock_material` (
   `Name` varchar(255) NOT NULL,
   `Type` varchar(255) NOT NULL,
   `Quantity` int(11) NOT NULL,
-  `Unit Price` int(11) NOT NULL,
+  `Unit_Price` int(11) NOT NULL,
   `Total` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -144,8 +146,8 @@ CREATE TABLE `main_stock_material` (
 -- Dumping data for table `main_stock_material`
 --
 
-INSERT INTO `main_stock_material` (`id`, `Purchase_order_no`, `Barcode`, `Name`, `Type`, `Quantity`, `Unit Price`, `Total`) VALUES
-(1, 'A1', 'Section 1', 'aa', 'Type 1', 5, 20, 100);
+INSERT INTO `main_stock_material` (`id`, `Purchase_order_no`, `Barcode`, `Name`, `Type`, `Quantity`, `Unit_Price`, `Total`) VALUES
+(6, 'G1', 'Code 4', 'test 3', 'type 2', 6, 8, 48);
 
 -- --------------------------------------------------------
 
@@ -235,22 +237,9 @@ CREATE TABLE `transfer` (
 --
 
 INSERT INTO `transfer` (`id`, `Date`, `Barcode`, `Unit_Cost`, `Transfer_to_section`, `Quantity`, `Cost`) VALUES
-(2735, '', 'code 2', 'Item 1', 'Department 1', 5, 50),
-(2739, '11/04/2019', 'code 1', 'Item 1', 'Department 1', 5, 0),
-(2740, '', 'code 3', 'Item 3', 'Department 3', 0, 0),
-(2741, '02/06/2019', 'Code 6', 'Item 1', 'Department 1', 0, 0),
-(2742, '11/04/2019', 'code 1', 'Item 1', 'Department 1', 0, 0),
-(2743, '11/04/2019', 'code 1', 'Item 1', 'Department 1', 0, 0),
-(2744, '11/04/2019', 'code 22', 'Item 1', 'Department 1', 0, 0),
-(2753, '11/04/2019', 'code 10', 'Item 1', 'Department 1', 0, 0),
-(2746, '11/04/2019', 'code 5', 'Item 1', 'Department 1', 0, 0),
-(2747, '11/04/2019', 'test', 'Item 1', 'Department 1', 0, 0),
-(2755, '11/04/2019', 'code 2', 'Item 1', 'Department 1', 0, 0),
-(2749, '11/04/2019', 'code 1', 'Item 1', 'Department 1', 0, 0),
-(2750, '11/04/2019', 'code 2', 'Item 1', 'Department 1', 0, 0),
-(2751, '11/04/2019', 'code 2', 'Item 1', 'Department 1', 0, 0),
-(2752, '11/04/2019', 'code 3', 'Item 1', 'Department 1', 0, 0),
-(2754, '11/04/2019', 'bbb', 'Item 1', 'Department 1', 0, 0);
+(2761, '18/04/2019', 'code 28', 'Item 1', 'Department 1', 50, 5000),
+(2762, '01/07/2019', 'code 1', 'Item 1', 'Department 1', 0, 0),
+(2752, '18/04/2019', 'code 3', 'Item 1', 'Department 1', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -324,12 +313,12 @@ ALTER TABLE `transfer`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `final_good`
 --
 ALTER TABLE `final_good`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `finished_goods`
 --
@@ -349,7 +338,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `main_stock_material`
 --
 ALTER TABLE `main_stock_material`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `material`
 --
@@ -369,7 +358,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `transfer`
 --
 ALTER TABLE `transfer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2756;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2763;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
